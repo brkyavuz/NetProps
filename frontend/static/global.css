@@ -1,0 +1,39 @@
+.bg-slate-800 {
+    background-color: #1e293b;
+}
+
+.bg-gray-800 {
+    background-color: #1f2937;
+}
+
+.bg-neutral-600 {
+    background-color: #525252;
+}
+
+.bg-neutral-700 {
+    background-color: #44403c;
+}
+
+.bg-neutral-900 {
+    background-color: #171717;
+}
+
+.bg-zinc-800 {
+    background-color: #27272a;
+}
+
+.border-orange-500 {
+    border-color: #f97316 !important;
+}
+
+.text-slate-300 {
+    color: #cbd5e1;
+}
+
+.text-orange-400 {
+    color: #fb923c;
+}
+
+.text-orange-500 {
+    color: #f97316;
+}
