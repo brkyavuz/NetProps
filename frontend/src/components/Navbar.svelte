@@ -1,4 +1,9 @@
 <script>
+	import { page } from '$app/stores';
+	let path;
+
+	$: path = $page.url.pathname;
+
 	export let navItems = [
 		{
 			name: 'Home',
@@ -55,7 +60,9 @@
 					{#if childs}
 						<li class="nav-item dropdown">
 							<a
-								class="nav-link dropdown-toggle"
+								class="nav-link dropdown-toggle {childs.map(({ href }) => href).includes(path)
+									? 'active'
+									: ''}"
 								href="/"
 								id="navbarDropdown"
 								role="button"
@@ -64,15 +71,24 @@
 							>
 								{name}
 							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<ul class="dropdown-menu bg-zinc-800" aria-labelledby="navbarDropdown">
 								{#each childs as dropdownItem}
-									<li><a class="dropdown-item" href={dropdownItem.href}>{dropdownItem.name}</a></li>
+									<li>
+										<a
+											class="dropdown-item text-slate-300 {path === dropdownItem.href
+												? 'active'
+												: ''}"
+											href={dropdownItem.href}>{dropdownItem.name}</a
+										>
+									</li>
 								{/each}
 							</ul>
 						</li>
 					{:else}
 						<li class="nav-item">
-							<a class="nav-link" aria-current="page" {href}>{name}</a>
+							<a class="nav-link {path === href ? 'active' : ''}" aria-current="page" {href}
+								>{name}</a
+							>
 						</li>
 					{/if}
 				{/each}
