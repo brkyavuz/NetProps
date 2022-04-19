@@ -1,8 +1,8 @@
 <script>
-	import Navbar from '../components/Navbar.svelte';
+	import TopNav from '../components/TopNav.svelte';
 </script>
 
-<Navbar />
+<TopNav />
 <div class="container-fluid">
 	<slot />
 </div>

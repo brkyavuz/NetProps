@@ -6,6 +6,7 @@
 </script>
 
 <h1>Inventory Page</h1>
+
 {#await fetchInventory}
 	<p>...waiting</p>
 {:then data}
@@ -13,10 +14,9 @@
 		<thead>
 			<tr>
 				<th scope="col">Hostname</th>
-				<th scope="col">IP Address</th>
-				<th scope="col">Type</th>
-				<th scope="col">Role</th>
+				<th scope="col">Address</th>
 				<th scope="col">Groups</th>
+				<th scope="col">Model</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,7 +26,6 @@
 					<td>{device[1]}</td>
 					<td>{device[2]}</td>
 					<td>{device[3]}</td>
-					<td>{device[4]}</td>
 				</tr>
 			{/each}
 		</tbody>

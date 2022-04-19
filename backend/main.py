@@ -22,6 +22,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+def inventory_constructor(nrobject):
+    hosts = []
+
+    for host in nrobject.inventory.hosts:
+        host_dict = nrobject.inventory.hosts[host].dict()
+        host_data = [
+            host_dict["name"],
+            host_dict["hostname"],
+            ",".join(host_dict["groups"]),
+            host_dict["data"]["model"]
+        ]
+        hosts.append(host_data)
+
+    return hosts
 
 @app.get("/")
 async def root():
@@ -31,18 +45,8 @@ async def root():
 async def get_inventory():
     nr = InitNornir(config_file="config.yaml")
 
-    data = []
+    hosts = inventory_constructor(nr)
+    
 
-    for host in nr.inventory.hosts:
-        host_dict = nr.inventory.hosts[host].dict()
-        device_data = [
-            host_dict["name"],
-            host_dict["hostname"],
-            host_dict["platform"],
-            host_dict["data"]["role"],
-            ",".join(host_dict["groups"])
-        ]
-        data.append(device_data)
-
-    return {"message": data}
+    return {"message": hosts}
 

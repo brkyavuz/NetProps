@@ -1,36 +1,31 @@
 # hosts.yaml
 ---
 
-R1:
-  hostname: 192.168.128.41
-  platform: ios
+sandbox-iosxe-latest-1:
+  hostname: "sandbox-iosxe-latest-1.cisco.com"
+  username: "developer"
+  password: "C1sco12345"
   groups:
     - ios
   data:
-    role: router
+    model: csr1000v
 
-R2:
-  hostname: 192.168.128.42
-  platform: ios
+sandbox-nxos-1:
+  hostname: "sandbox-nxos-1.cisco.com"
+  username: "admin"
+  password: "Admin_1234!"
   groups:
-    - ios
+    - nxos
   data:
-    role: router
+    model: n9kv
 
-R3:
-  hostname: 192.168.128.43
-  platform: ios
+sandbox-iosxr-1:
+  hostname: "sandbox-iosxr-1.cisco.com"
+  username: "admin"
+  password: "C1sco12345"
   groups:
-    - ios
+    - iosxr
   data:
-    role: router
-
-R4:
-  hostname: 192.168.128.44
-  platform: ios
-  groups:
-    - ios
-  data:
-    role: router
+    model: iosxrv
 
 ...
