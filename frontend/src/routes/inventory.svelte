@@ -1,22 +1,22 @@
 <script>
+	import { Table } from 'sveltestrap/src';
+
 	const fetchInventory = (async () => {
 		const response = await fetch('http://127.0.0.1:8000/inventory');
 		return await response.json();
 	})();
 </script>
 
-<h1>Inventory Page</h1>
-
 {#await fetchInventory}
 	<p>...waiting</p>
 {:then data}
-	<table class="table table-dark">
+	<Table dark responsive striped>
 		<thead>
 			<tr>
-				<th scope="col">Hostname</th>
-				<th scope="col">Address</th>
-				<th scope="col">Groups</th>
-				<th scope="col">Model</th>
+				<th>Hostname</th>
+				<th>Address</th>
+				<th>Groups</th>
+				<th>Model</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,7 +29,7 @@
 				</tr>
 			{/each}
 		</tbody>
-	</table>
+	</Table>
 {:catch error}
 	<p>An error occurred!</p>
 	<p>{error}</p>

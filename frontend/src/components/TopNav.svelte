@@ -1,8 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	let path;
-	$: path = $page.url.pathname;
-
 	import {
 		Collapse,
 		Navbar,
@@ -24,44 +20,14 @@
 	}
 
 	// My Variables
-	const navLinks = [
-		{
-			name: 'Home',
-			href: '/'
-		},
-		{
-			name: 'Dashboard',
-			href: '/dashboard'
-		},
-		{
-			name: 'Inventory',
-			href: '/inventory'
-		},
-		{
-			name: 'Change Management',
-			href: '/',
-			childs: [
-				{
-					name: 'Templates',
-					href: '/cm/templates'
-				},
-				{
-					name: 'Get Config',
-					href: '/cm/getconfig'
-				},
-				{
-					name: 'Send Config',
-					href: '/cm/sendconfig'
-				}
-			]
-		}
-	];
+	export let path;
+	export let navLinks;
 </script>
 
-<Navbar light expand="lg" class="navbar-dark border-bottom border-2 border-orange-500">
-	<NavbarBrand href="/">NetProbe</NavbarBrand>
+<Navbar light expand="lg" class="navbar-dark bg-zinc-900 border-bottom border-2 border-orange-500">
+	<NavbarBrand href="/"><img src="/netprobe_logo.png" alt="NetProbe" /></NavbarBrand>
 	<NavbarToggler on:click={() => (isOpen = !isOpen)} />
-	<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
+	<Collapse {isOpen} navbar expand="lg" on:update={handleUpdate}>
 		<Nav class="ms-auto" navbar>
 			{#each navLinks as { name, href, childs }}
 				{#if childs}
@@ -72,7 +38,7 @@
 							class={childs.map(({ href }) => href).includes(path) ? 'active' : ''}
 							>{name}</DropdownToggle
 						>
-						<DropdownMenu end class="bg-zinc-800">
+						<DropdownMenu end class="bg-zinc-900">
 							{#each childs as dropdownItem}
 								<DropdownItem
 									href={dropdownItem.href}
